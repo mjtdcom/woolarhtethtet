@@ -4,27 +4,30 @@
     <title>Mad Libs Generator</title>
     <style>
         body { font-family: Arial; max-width: 600px; margin: 0 auto; padding: 20px; }
-        input { margin: 5px; padding: 8px; width: 100%; }
-        button { padding: 10px; background: #4CAF50; color: white; border: none; cursor: pointer; }
+        label { display: block; margin-top: 10px; }
+        input { margin: 5px 0; padding: 8px; width: 100%; box-sizing: border-box; }
+        button { padding: 10px; background: #4CAF50; color: white; border: none; cursor: pointer; margin-top: 10px; }
+        button:hover { background: #45a049; }
+        #story { margin-top: 20px; white-space: pre-line; }
     </style>
 </head>
 <body>
     <h1>Mad Libs Generator</h1>
     <p>Fill in the blanks below:</p>
 
-    <label>Adjective:</label>
-    <input type="text" id="adjective" placeholder="e.g., happy">
+    <label for="firstname">First Name:</label>
+    <input type="text" id="firstname" placeholder="e.g., John">
 
-    <label>Noun:</label>
-    <input type="text" id="noun" placeholder="e.g., dog">
+    <label for="lastname">Last Name:</label>
+    <input type="text" id="lastname" placeholder="e.g., Smith">
 
-    <label>Verb (Past Tense):</label>
+    <label for="verb_past">Verb (Past Tense):</label>
     <input type="text" id="verb_past" placeholder="e.g., danced">
 
-    <label>Adverb:</label>
+    <label for="adverb">Adverb:</label>
     <input type="text" id="adverb" placeholder="e.g., wildly">
 
-    <label>Animal:</label>
+    <label for="animal">Animal:</label>
     <input type="text" id="animal" placeholder="e.g., octopus">
 
     <button onclick="generateMadLib()">Generate Story</button>
@@ -35,18 +38,17 @@
     <script>
         function generateMadLib() {
             // Get user inputs
-            const adjective = document.getElementById("adjective").value;
-            const noun = document.getElementById("noun").value;
+            const firstname = document.getElementById("firstname").value;
+            const lastname = document.getElementById("lastname").value;
             const verb_past = document.getElementById("verb_past").value;
             const adverb = document.getElementById("adverb").value;
             const animal = document.getElementById("animal").value;
+            
 
             // Generate story
-            const story = `
-                Once upon a time, there was a ${adjective} ${noun} who loved to ${verb_past} ${adverb}. 
-                One day, the ${noun} met a ${animal} and they became best friends. 
-                They lived happily ever after... until the ${animal} ate the ${noun}.
-            `;
+            const story = `Once upon a time, there was a ${firstname} ${lastname} who loved to ${verb_past} ${adverb}. 
+One day, ${firstname} ${lastname} met a ${animal} and they became best friends. 
+They lived happily ever after... until the ${animal} ate ${firstname} ${lastname}.`;
 
             // Display story
             document.getElementById("story").innerText = story;
